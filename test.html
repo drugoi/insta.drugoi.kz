@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>In KZ — TEST</title>
+        <meta name="author" content="Nikita Bayev"/>
+        <link rel="shortcut icon" href="/favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/modernizr.custom.70736.js"></script>
+		<script type='text/javascript' src='js/jquery.min.js'></script>
+	</head>
+<body>
+	<script src="js/jquery.instagram.js"></script>
+		<script type="text/javascript">
+
+		$(function(){
+		  var
+		    insta_container = $(".instagram")
+		  , insta_next_url
+		
+		  insta_container.instagram({
+		      hash: 'kazakhstan'
+		    , clientId : '30178bbb27294d62b487399d1ef5a404'
+		    , show : 18
+		    , onComplete : function (photos, data) {
+		      insta_next_url = data.pagination.next_url
+		    }
+		  })
+		
+		  $('button').on('click', function(){
+		    var 
+		      button = $(this)
+		    , text = button.text()
+		
+		    if (button.text() != 'Loading…'){
+		      button.text('Loading…')
+		      insta_container.instagram({
+		          next_url : insta_next_url
+		        , show : 18
+		        , onComplete : function(photos, data) {
+		          insta_next_url = data.pagination.next_url
+		          button.text(text)
+        }
+      })
+    }       
+  }) 
+});
+		</script>
+ <div class="instagram"></div>
+ <button>More</button>
+</body>
+</html>	
