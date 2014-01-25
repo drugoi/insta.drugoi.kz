@@ -30,11 +30,11 @@
         image_url = photo.images.thumbnail.url;
       }
       else if (settings.image_size == 'standard_resolution') {
-        image_url = photo.images.standard_resolution.url;
+        image_url = photo.images.standard_resolution.url;-
       }
 
       return $('<div>')
-        .addClass('instagram-placeholder')
+        .addClass('b-instagram__place')
         .attr('id', photo.id)
         .append(
           $('<a>')
